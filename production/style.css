@@ -1,0 +1,366 @@
+.db
+{ 
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .8em;
+}
+
+table.tabulka
+{ width: 100%;
+	background-color: #fafafa;
+	border: 1px #000000 solid;
+	border-collapse: collapse;
+	border-spacing: 0px; 
+}
+
+
+td.nadpis
+{
+	background-color: #99CCCC;
+	border: 1px #000000 solid;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 12px;
+	color: #404040; 
+}
+
+
+td.bunka
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: #404040;
+	background-color: #fafafa;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+
+td.priority
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: #8F0200;
+	background-color: #fafdc4;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+
+td.priority_red
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: white;
+	background-color: red;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+
+input.priority_red
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: white;
+	background-color: red;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+
+td.printed
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: #404040;
+	background-color: #DAFFA9;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+
+td.up
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: blue;
+	background-color: #CFFFFF;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+
+td.done
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: #8C8C8C;
+	background-color: #E8E8E8;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+td.eps_problem
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: white;
+	background-color: darkred;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+td.hold
+{ 
+	border-bottom: 1px #6699CC dotted;
+	text-align: left;
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	font-size: .7em;
+	color: red;
+	background-color: #E8E8E8;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 0px; 
+}
+
+input.bunka
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #404040;
+	background-color: #fafafa;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+
+input.priority
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #8F0200;
+	background-color: #fafdc4;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+input.printed
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #404040;
+	background-color: #DAFFA9;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+input.up
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: blue;
+	background-color: #CFFFFF;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+input.done
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #8C8C8C;
+	background-color: #E8E8E8;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+input.eps_problem
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: white;
+	background-color: darkred;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+input.hold
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: red;
+	background-color: #E8E8E8;
+	width: 150px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+	width:100%;
+}
+
+select.bunka
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #404040;
+	background-color: #fafafa;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
+
+
+select.priority
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #8F0200;
+	background-color: #fafdc4;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
+
+select.printed
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #404040;
+	background-color: #DAFFA9;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
+
+select.up
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: blue;
+	background-color: #CFFFFF;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
+
+select.done
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: #8C8C8C;
+	background-color: #E8E8E8;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
+
+select.eps_problem
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: white;
+	background-color: darkred;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
+
+select.hold
+{ 
+	font-family: Verdana, sans-serif, Arial;
+	font-weight: normal;
+	/* font-size: .7em; */
+	color: red;
+	background-color: #E8E8E8;
+	width: 70px;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-left: 0px solid;
+	border-bottom: 0px solid;
+}
