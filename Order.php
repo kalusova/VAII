@@ -19,13 +19,12 @@ class Order
      * @param $end
      * @param $state
      */
-    public function __construct($id, $name, $surname, $start, $end, $state)
+    public function __construct($id, $name, $surname, $start, $state)
     {
         $this->id = $id;
         $this->name = $name;
         $this->surname = $surname;
         $this->start = $start;
-        $this->end = $end;
         $this->state = $state;
     }
 
