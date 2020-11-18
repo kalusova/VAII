@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- Brand -->
-    <a class="navbar-brand" href="#"><img src="https://lh3.googleusercontent.com/proxy/wOaHFzHe7ohRP2zPZmFvB7C5wFa05oZo8nkpqg4E--LYyfhwJECBoxmNH_pTDITR9ikCswC6a1rwOfDSIClfcBzjEKidrr-pPgW-efa8oo2SaFFA4rYK" alt="logo" width="50"/></a>
+    <a class="navbar-brand" href="#"><img src="https://lh3.googleusercontent.com/proxy/V2AmdXh641IXP0qvHxCeeXgXQY1T-XjoBgdqC0IOKt_wjkrvutoMpaFsyYXgEV2psBIxqnjTsLLgNRkXNNWARWHt_cnWqIKcn3TP-wPPPboX0doMn4I0" alt="logo" width="50"/></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,20 +24,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Prehľad <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Overview <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Administrácia</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#">New Order</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Objednávky
+                    Orders
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Čakajúce objednávky</a>
-                    <a class="dropdown-item" href="#">Vybavené objednávky</a>
+                    <a class="dropdown-item" href="#">Waiting</a>
+                    <a class="dropdown-item" href="#">Closed</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Všetky objednávky</a>
+                    <a class="dropdown-item" href="#">All orders</a>
                 </div>
             </li>
         </ul>
@@ -49,16 +49,16 @@
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0" formaction="login.html">Log out</button>
     </form>
 </nav>
-<h2>Zoznam objednávok</h2>
+<h2>List of orders</h2>
 <table class="table table-hover">
     <thead>
     <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Celé meno</th>
-        <th scope="col">Priezvisko</th>
-        <th scope="col">Dátum prijatia</th>
-        <th scope="col">Dátum vybavenia</th>
-        <th scope="col">Stav</th>
+        <th scope="col">Order ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Acceptance Date</th>
+        <th scope="col">Closing Date</th>
+        <th scope="col">State</th>
     </tr>
     </thead>
     <tbody>
