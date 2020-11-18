@@ -16,7 +16,7 @@ class DB_Storage
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-    public function createOrder(int $id, string $name, string $surname, string $start, string $state) {
+    public function createOrder(string $name, string $surname, string $start, string $state) {
         $order = new Order($id, $name, $surname, $start, $state);
         $this->saveOrder($order);
     }
