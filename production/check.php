@@ -11,7 +11,7 @@ $sql = "SELECT count(*) as pocet FROM users where login='".$meno_login."' and pa
 if ($result = $mysqli -> query($sql)) {
 
 	while ($row = mysqli_fetch_assoc($result)) {
-		$login_ok=$row["pocet"];
+		$login_ok = $row["pocet"];
 	}
 }
 
