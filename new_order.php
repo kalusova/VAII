@@ -3,7 +3,8 @@ ob_start();
 ini_set('display_errors', 1);
 include 'db_connect.php';
 require "DB_Storage.php";
-$storage = new DB_Storage();
+
+$storage = new DB_Storage($mysqli);
 
 $meno=$_POST["firstName"];
 $priezvisko=$_POST["lastName"];
