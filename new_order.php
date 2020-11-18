@@ -1,8 +1,9 @@
 <?php
 ob_start();
 ini_set('display_errors', 1);
+error_reporting(E_ALL);
 include 'db_connect.php';
-require "DB_Storage.php";
+include 'DB_Storage.php';
 
 $storage = new DB_Storage($mysqli);
 
@@ -19,8 +20,9 @@ $storage->createOrder($meno, $priezvisko, $datum, "Open");
 <body>
 
 <SCRIPT language="JavaScript">
-    window.location="dashboard.html";
+//    window.location="dashboard.html";
 </SCRIPT>
+<?php
 ob_end_flush();
 ?>
 </body>

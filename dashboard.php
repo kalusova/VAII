@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+declare(strict_types=1);
+require "new_order.php";
+$storage = new DB_Storage($mysqli);
+$orders = $storage->getAll();
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,14 +69,17 @@
     </thead>
     <tbody>
     <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>01/01/2020</td>
-        <td>01/02/2020</td>
-        <td>Closed</td>
+        <?php
+        foreach ($orders as $order) {?>
+        <td><?= $order->getId() ?></td>
+        <td><?= $order->getName() ?></td>
+        <td><?= $order->getSurname() ?></td>
+        <td><?= $order->getStart() ?></td>
+        <td><?= $order->getEnd() ?></td>
+        <td><?= $order->getState() ?></td>
+        <?php } ?>
     </tr>
-    <tr>
+    <!--<tr>
         <td>2</td>
         <td>Jacob</td>
         <td>Thornton</td>
@@ -109,7 +118,7 @@
         <td>01/10/2020</td>
         <td>-</td>
         <td>Open</td>
-    </tr>
+    </tr>-->
     </tbody>
 </table>
 

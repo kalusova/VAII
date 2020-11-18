@@ -14,29 +14,33 @@ class DB_Storage
     $this->mysqli = $mysqli;
     }
 
-    public function getAll(){
+    public function getAll() : array {
         $sql = "SELECT count(*) FROM Orders";
         $orders = [];
-        $order = new Order();
+        while($row = ($this->mysqli->query($sql))->fetch_row() ){
+            $order = new Order($row['id'], $row['meno'], $row['priezvisko'], $row['start'], $row['end'], $row['state']);
+            $orders[] = $order;
+        }
+        return $orders;
+
     }
     public function saveOrder(Order $order) {
         $sql = "INSERT INTO Orders (meno, priezvisko, start, end, state)
                 VALUES ('$order->name', '$order->surname', '$order->start', '$order->end', '$order->state')";
 
-        if ($mysqli->query($sql) === TRUE) {
+        if ($this->mysqli->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
-            echo "Error: " . $sql . "<br>" . $mysqli->error;
+            echo "Error: " . $sql . "<br>" . $this->mysqli->error;
         }
     }
-    public function createOrder(string $name, string $surname, string $start, string $state) {
-        $sql = "INSERT INTO Orders (meno, priezvisko, start, state)
+    public function createOrder(string $name, string $surname, string $start, string $state) {$sql = "INSERT INTO Orders (meno, priezvisko, start, state)
                 VALUES ('$name', '$surname', '$start', '$state')";
-
-        if ($mysqli->query($sql) === TRUE) {
+        echo $sql;
+        if ($this->mysqli->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
-            echo "Error: " . $sql . "<br>" . $mysqli->error;
+            echo "Error: " . $sql . "<br>" . $this->mysqli->error;
         }
     }
 }
