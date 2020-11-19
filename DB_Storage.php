@@ -71,9 +71,9 @@ class DB_Storage
     }
     public function editEnd($id, $end) : void
     {
-        $sql = "UPDATE Orders SET end='$end' WHERE id=$id";
+        $sql = "UPDATE Orders SET end='$end', state='Closed' WHERE id=$id";
         if ($this->mysqli->query($sql) === TRUE) {
-            echo "Record updated successfully";
+            //echo "Record updated successfully";
         } else {
             echo "Error updating record: " . $this->mysqli->error;
         }
