@@ -31,7 +31,7 @@ elseif (isset($_POST["id_end"])){
     $id = $_POST["id_end"];
     $end = $_POST["end"];
     $storage->editEnd($id, $end);
-    header("Refresh:0");
+    //header("Refresh:0");
 }
 
 ob_end_flush();
@@ -155,7 +155,7 @@ ob_end_flush();
     </div>
 </form>
 
-<form action="dashboard.php" method="post">
+<form action="dashboard.php" method="post" onsubmit="return validateDate(document.getElementById('end'))">
     <div class="container" >
         <h3>Edit Closing Date</h3>
         <p>Please Enter ID of order that you want to EDIT</p>
@@ -179,6 +179,18 @@ ob_end_flush();
     </div>
 </form>
 
+<script>
+    function validateDate(dateString) {
+        var regEx = /^\d{4}-\d{2}-\d{2}$/;
+        if(!dateString.match(regEx)) return false;  // Invalid format
+        var d = new Date(dateString);
+        var dNum = d.getTime();
+        if(!dNum && dNum !== 0) return false; // NaN value, Invalid date
+        return d.toISOString().slice(0,10) === dateString;
+    }
+
+</script>
 </body>
 </html>
+
 
