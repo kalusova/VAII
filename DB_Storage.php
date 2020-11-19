@@ -15,20 +15,22 @@ class DB_Storage
     $this->mysqli = $mysqli;
     }
 
+    /**
+     * @return Order[]
+     */
     public function getAll() : array {
-        $query = "SELECT count(*) FROM Orders";
+        $query = "SELECT * FROM Orders";
         $orders = [];
         if($result = $this->mysqli->query($query)){
             while($row = $result->fetch_row() ){
-                $order = new Order($row['id'], $row['meno'], $row['priezvisko'], $row['start'], $row['end'], $row['state']);
+                $order = new Order($row[0], $row[1], $row[2], $row[3], $row[4], $row[5]);
                 $orders[] = $order;
             }
         }
-
         return $orders;
 
     }
-    public function saveOrder(Order $order) {
+    public function saveOrder(Order $order) : void {
         $sql = "INSERT INTO Orders (meno, priezvisko, start, end, state)
                 VALUES ('$order->name', '$order->surname', '$order->start', '$order->end', '$order->state')";
 
@@ -38,10 +40,9 @@ class DB_Storage
             echo "Error: " . $sql . "<br>" . $this->mysqli->error;
         }
     }
-    public function createOrder(string $name, string $surname, string $start, string $state) {
+    public function createOrder(string $name, string $surname, string $start, string $state) : void {
         $sql = "INSERT INTO Orders (meno, priezvisko, start, state)
                 VALUES ('$name', '$surname', '$start', '$state')";
-        echo $sql;
         if ($this->mysqli->query($sql) === TRUE) {
             echo "New record created successfully";
         } else {
@@ -49,7 +50,13 @@ class DB_Storage
         }
     }
 
-    public function printOrder(Order $order){
-        echo $order->getId().  ", " . $order->getName().  ", " .  $order->getSurname().  ", " .  $order->getStart().  ", " .  $order->getEnd().  ", " .  $order->getState();
+    public function deleteRow(int $id) : void
+    {
+        $sql = "DELETE FROM Orders WHERE id=$id";
+        if ($this->mysqli->query($sql) === TRUE) {
+            echo "Record deleted successfully";
+        } else {
+            echo "Error deleting record: " . $this->mysqli->error;
+        }
     }
 }

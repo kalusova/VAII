@@ -6,6 +6,8 @@ include 'db_connect.php';
 include 'DB_Storage.php';
 
 $storage = new DB_Storage($mysqli);
+$orders = $storage->getAll();
+
 
 if(isset($_POST["firstName"])){
     $meno=$_POST["firstName"];
@@ -13,10 +15,17 @@ if(isset($_POST["firstName"])){
     $datum = $_POST["date"];
     $login_ok = 0;
     $storage->createOrder($meno, $priezvisko, $datum, "Open");
+    header("Refresh:0");
 }
+elseif (isset($_POST["id"])){
+    $id = $_POST["id"];
+    $storage->deleteRow($id);
+    header("Refresh:0");
+}
+
 ob_end_flush();
 ?>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,9 +53,6 @@ ob_end_flush();
             <li class="nav-item active">
                 <a class="nav-link" href="#">Overview <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="new_order.html" >New Order</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Orders
@@ -67,88 +73,73 @@ ob_end_flush();
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0" formaction="login.html">Log out</button>
     </form>
 </nav>
+<form action="dashboard.php" method="post">
+    <div class="container" >
+        <h2>List of orders</h2>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Acceptance Date</th>
+                <th scope="col">Closing Date</th>
+                <th scope="col">State</th>
+            </tr>
 
-<h2>List of orders</h2>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">Order ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
-        <th scope="col">Acceptance Date</th>
-        <th scope="col">Closing Date</th>
-        <th scope="col">State</th>
-    </tr>
-    </thead>
-</table>
+
+        <?php foreach ($orders as $order) {?>
+            <tr>
+                <td><?php echo $order->getId()?></td>
+                <td><?php echo $order->getName()?></td>
+                <td><?php echo $order->getSurname()?></td>
+                <td><?php echo $order->getStart()?></td>
+                <td><?php echo $order->getEnd()?></td>
+                <td><?php echo $order->getState()?></td>
+            </tr>
+            <?php
+        } ?>
+            </thead>
+        </table>
+    </div>
+</form>
 
     <form action="dashboard.php" method="post">
         <div class="container" >
             <h3>New order</h3>
+            <p>Please Enter following information</p>
             <form class="needs-validation" novalidate>
                 <label for="firstName">First name</label>
-                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="" required>
+                <input type="text" class="w3-input w3-border" style="width:20%" name="firstName" id="firstName" placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid first name is required.
                 </div>
                 <label for="lastName">Last name</label>
-                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
+                <input type="text" class="w3-input w3-border" style="width:20%" name="lastName" id="lastName" placeholder="" value="" required>
                 <div class="invalid-feedback">
                     Valid last name is required.
                 </div>
                 <label for="date">Date</label>
-                <input type="text" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD" required>
+                <input type="text" class="w3-input w3-border" style="width:20%" name="date" id="date" placeholder="YYYY-MM-DD" required>
                 <div class="invalid-feedback">
                     Please enter starting date.
                 </div>
-
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Save order</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Save order</button>
+                <br>
                 <br>
             </form>
         </div>
     </form>
-
-    <!--<tr>
-        <td>2</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>01/02/2020</td>
-        <td>01/02/2020</td>
-        <td>Closed</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Eliz</td>
-        <td>Fling</td>
-        <td>01/04/2020</td>
-        <td>-</td>
-        <td>Open</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Peter</td>
-        <td>Thorn</td>
-        <td>01/09/2020</td>
-        <td>-</td>
-        <td>Open</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Jonah</td>
-        <td>Ghost</td>
-        <td>10/09/2020</td>
-        <td>-</td>
-        <td>Open</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Julie</td>
-        <td>Young</td>
-        <td>01/10/2020</td>
-        <td>-</td>
-        <td>Open</td>
-    </tr>-->
-
+<form action="dashboard.php" method="post">
+    <div class="container" >
+        <h3>Delete order</h3>
+        <p>Please Enter ID of order that you want to DELETE</p>
+        <label for="id">Order ID</label>
+        <input type="text" class="w3-input w3-border" style="width:20%" name="id" id="id" placeholder="Enter Order ID" value="" required>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete</button>
+        <br>
+    </div>
+</form>
 
 </body>
 </html>
