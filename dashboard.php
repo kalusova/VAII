@@ -183,7 +183,7 @@ ob_end_flush();
         function validateDate() {
             let regex = new RegExp('^\\d{4}-\\d{2}-\\d{2}$');
             if(!(String(document.getElementById('end').value).match(regex))){
-                alert("wrong format");
+                alert("wrong format, enter date in YYYY-MM-DD");
                 return false;  // Invalid format
             }
             else {
