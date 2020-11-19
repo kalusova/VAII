@@ -1,8 +1,20 @@
 <?php
-declare(strict_types=1);
-require "new_order.php";
+ob_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+include 'db_connect.php';
+include 'DB_Storage.php';
+
 $storage = new DB_Storage($mysqli);
-$orders = $storage->getAll();
+
+if(isset($_POST["firstName"])){
+    $meno=$_POST["firstName"];
+    $priezvisko=$_POST["lastName"];
+    $datum = $_POST["date"];
+    $login_ok = 0;
+    $storage->createOrder($meno, $priezvisko, $datum, "Open");
+}
+ob_end_flush();
 ?>
 
 <html lang="en">
@@ -21,7 +33,7 @@ $orders = $storage->getAll();
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- Brand -->
-    <a class="navbar-brand" href="#"><img src="https://lh3.googleusercontent.com/proxy/V2AmdXh641IXP0qvHxCeeXgXQY1T-XjoBgdqC0IOKt_wjkrvutoMpaFsyYXgEV2psBIxqnjTsLLgNRkXNNWARWHt_cnWqIKcn3TP-wPPPboX0doMn4I0" alt="logo" width="50"/></a>
+    <a class="navbar-brand" href="#"></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,6 +67,7 @@ $orders = $storage->getAll();
         <button type="submit" class="btn btn-outline-success my-2 my-sm-0" formaction="login.html">Log out</button>
     </form>
 </nav>
+
 <h2>List of orders</h2>
 <table class="table table-hover">
     <thead>
@@ -67,18 +80,34 @@ $orders = $storage->getAll();
         <th scope="col">State</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-        <?php
-        foreach ($orders as $order) {?>
-        <td><?= $order->getId() ?></td>
-        <td><?= $order->getName() ?></td>
-        <td><?= $order->getSurname() ?></td>
-        <td><?= $order->getStart() ?></td>
-        <td><?= $order->getEnd() ?></td>
-        <td><?= $order->getState() ?></td>
-        <?php } ?>
-    </tr>
+</table>
+
+    <form action="dashboard.php" method="post">
+        <div class="container" >
+            <h3>New order</h3>
+            <form class="needs-validation" novalidate>
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Valid first name is required.
+                </div>
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Valid last name is required.
+                </div>
+                <label for="date">Date</label>
+                <input type="text" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD" required>
+                <div class="invalid-feedback">
+                    Please enter starting date.
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Save order</button>
+                <br>
+            </form>
+        </div>
+    </form>
+
     <!--<tr>
         <td>2</td>
         <td>Jacob</td>
@@ -119,8 +148,7 @@ $orders = $storage->getAll();
         <td>-</td>
         <td>Open</td>
     </tr>-->
-    </tbody>
-</table>
+
 
 </body>
 </html>

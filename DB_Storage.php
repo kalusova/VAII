@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+include "Order.php";
 
 class DB_Storage
 {
@@ -15,12 +16,15 @@ class DB_Storage
     }
 
     public function getAll() : array {
-        $sql = "SELECT count(*) FROM Orders";
+        $query = "SELECT count(*) FROM Orders";
         $orders = [];
-        while($row = ($this->mysqli->query($sql))->fetch_row() ){
-            $order = new Order($row['id'], $row['meno'], $row['priezvisko'], $row['start'], $row['end'], $row['state']);
-            $orders[] = $order;
+        if($result = $this->mysqli->query($query)){
+            while($row = $result->fetch_row() ){
+                $order = new Order($row['id'], $row['meno'], $row['priezvisko'], $row['start'], $row['end'], $row['state']);
+                $orders[] = $order;
+            }
         }
+
         return $orders;
 
     }
@@ -34,7 +38,8 @@ class DB_Storage
             echo "Error: " . $sql . "<br>" . $this->mysqli->error;
         }
     }
-    public function createOrder(string $name, string $surname, string $start, string $state) {$sql = "INSERT INTO Orders (meno, priezvisko, start, state)
+    public function createOrder(string $name, string $surname, string $start, string $state) {
+        $sql = "INSERT INTO Orders (meno, priezvisko, start, state)
                 VALUES ('$name', '$surname', '$start', '$state')";
         echo $sql;
         if ($this->mysqli->query($sql) === TRUE) {
@@ -42,5 +47,9 @@ class DB_Storage
         } else {
             echo "Error: " . $sql . "<br>" . $this->mysqli->error;
         }
+    }
+
+    public function printOrder(Order $order){
+        echo $order->getId().  ", " . $order->getName().  ", " .  $order->getSurname().  ", " .  $order->getStart().  ", " .  $order->getEnd().  ", " .  $order->getState();
     }
 }
