@@ -34,7 +34,7 @@ else {
 if ($login_ok==1) {
     ?>
         <SCRIPT language="JavaScript">
-            window.location="dashboard.html";
+            window.location="dashboard.php";
         </SCRIPT>
     <?php
 }
