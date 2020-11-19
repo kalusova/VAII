@@ -59,4 +59,23 @@ class DB_Storage
             echo "Error deleting record: " . $this->mysqli->error;
         }
     }
+
+    public function editState($id, $state) : void
+    {
+        $sql = "UPDATE Orders SET state='$state' WHERE id=$id";
+        if ($this->mysqli->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $this->mysqli->error;
+        }
+    }
+    public function editEnd($id, $end) : void
+    {
+        $sql = "UPDATE Orders SET end='$end' WHERE id=$id";
+        if ($this->mysqli->query($sql) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating record: " . $this->mysqli->error;
+        }
+    }
 }

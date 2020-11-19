@@ -8,7 +8,6 @@ include 'DB_Storage.php';
 $storage = new DB_Storage($mysqli);
 $orders = $storage->getAll();
 
-
 if(isset($_POST["firstName"])){
     $meno=$_POST["firstName"];
     $priezvisko=$_POST["lastName"];
@@ -20,6 +19,18 @@ if(isset($_POST["firstName"])){
 elseif (isset($_POST["id"])){
     $id = $_POST["id"];
     $storage->deleteRow($id);
+    header("Refresh:0");
+}
+elseif (isset($_POST["id_state"])){
+    $id = $_POST["id_state"];
+    $state = $_POST["state"];
+    $storage->editState($id, $state);
+    header("Refresh:0");
+}
+elseif (isset($_POST["id_end"])){
+    $id = $_POST["id_end"];
+    $end = $_POST["end"];
+    $storage->editEnd($id, $end);
     header("Refresh:0");
 }
 
@@ -126,10 +137,37 @@ ob_end_flush();
                 </div>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Save order</button>
                 <br>
-                <br>
+
             </form>
         </div>
     </form>
+
+<form action="dashboard.php" method="post">
+    <div class="container" >
+        <h3>Edit State</h3>
+        <p>Please Enter ID of order that you want to EDIT</p>
+        <label for="id">Order ID</label>
+        <input type="text" class="w3-input w3-border" style="width:20%" name="id_state" id="id_state" placeholder="Enter Order ID" value="" required>
+        <label for="id">State</label>
+        <input type="text" class="w3-input w3-border" style="width:20%" name="state" id="state" placeholder="Enter state" value="" required>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Edit</button>
+        <br>
+    </div>
+</form>
+
+<form action="dashboard.php" method="post">
+    <div class="container" >
+        <h3>Edit Closing Date</h3>
+        <p>Please Enter ID of order that you want to EDIT</p>
+        <label for="id">Order ID</label>
+        <input type="text" class="w3-input w3-border" style="width:20%" name="id_end" id="id_end" placeholder="Enter Order ID" value="" required>
+        <label for="id">Closing Date</label>
+        <input type="text" class="w3-input w3-border" style="width:20%" name="end" id="end" placeholder="YYYY-MM-DD" value="" required>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Edit</button>
+        <br>
+    </div>
+</form>
+
 <form action="dashboard.php" method="post">
     <div class="container" >
         <h3>Delete order</h3>
